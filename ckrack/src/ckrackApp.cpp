@@ -1,6 +1,7 @@
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 #include "CrackController.h"
+#include "cinder/Rand.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -28,8 +29,10 @@ void ckrackApp::setup()
 
 void ckrackApp::mouseDown( MouseEvent event )
 {
+    
 //    simply add a crack to the list
     controller.addCrack();
+    Rand::randomize();
 }
 
 void ckrackApp::update()

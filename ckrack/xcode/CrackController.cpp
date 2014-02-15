@@ -33,7 +33,6 @@ void CrackController::addCrack(){
         addRandomCrack();
     else {
         Crack latest = mCracks.back();
-//        mCracks.push_back(latest);
         mCracks.push_back(Crack::continueCrack(latest));
     }
 }
