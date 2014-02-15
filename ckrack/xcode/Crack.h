@@ -12,6 +12,7 @@ public:
     void draw();
   
     static Crack randomCrack();
+    static Crack continueCrack(Crack);
     
     ci::Vec2f mStart;
     ci::Vec2f mEnd;

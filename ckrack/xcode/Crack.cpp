@@ -34,7 +34,7 @@ void Crack::draw(){
     gl::drawVector(p1, p2);
 }
 
-    Crack Crack::randomCrack(){
+Crack Crack::randomCrack(){
     float sx = Rand::randFloat( app::getWindowWidth() );
     float sy = Rand::randFloat( app::getWindowHeight() );
     Vec2f start = Vec2f(sx, sy);
@@ -44,4 +44,11 @@ void Crack::draw(){
     return Crack(start, end);
     
    
+}
+
+Crack Crack::continueCrack(Crack crack){
+    float ex = Rand::randFloat(app::getWindowWidth());
+    float ey = Rand::randFloat(app::getWindowHeight());
+    Vec2f end = Vec2f(ex, ey);
+    return Crack(crack.mEnd, end);
 }

@@ -12,6 +12,8 @@ public:
     void update();
     void draw();
     void addRandomCrack();
+    void addCrack();
+    bool isEmpty();
     std::list<Crack> mCracks;
     
     int mXRes; int mYRes;

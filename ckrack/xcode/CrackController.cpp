@@ -28,4 +28,17 @@ void CrackController::addRandomCrack(){
     mCracks.push_back(Crack::randomCrack());
 }
 
+void CrackController::addCrack(){
+    if (isEmpty())
+        addRandomCrack();
+    else {
+        Crack latest = mCracks.back();
+//        mCracks.push_back(latest);
+        mCracks.push_back(Crack::continueCrack(latest));
+    }
+}
+
+bool CrackController::isEmpty(){
+    return mCracks.empty();
+}
     
