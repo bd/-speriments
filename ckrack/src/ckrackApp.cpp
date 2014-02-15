@@ -34,14 +34,14 @@ void ckrackApp::mouseDown( MouseEvent event )
 
 void ckrackApp::update()
 {
-    
+    controller.update();
 }
 
 void ckrackApp::draw()
 {
     // clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) );
-    controller.update();
+    controller.draw();
     
 }
 
