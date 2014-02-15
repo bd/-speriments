@@ -1,0 +1,10 @@
+#.gitignore
+
+*.o
+build/
+.DS_Store
+*.xcbkptlist
+
+*.xcsettings
+
+*.xcuserstate
