@@ -13,6 +13,8 @@ public:
     void draw();
     void addRandomCrack();
     void addCrack();
+    void addCrack(ci::Vec2f);
+    void continueCrack();
     bool isEmpty();
     std::list<Crack> mCracks;
     

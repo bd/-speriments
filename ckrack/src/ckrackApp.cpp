@@ -29,15 +29,16 @@ void ckrackApp::setup()
 
 void ckrackApp::mouseDown( MouseEvent event )
 {
-    
-//    simply add a crack to the list
-    controller.addCrack();
     Rand::randomize();
+//    simply add a crack to the list, starting at the mouse loc
+    controller.addCrack();
+    
 }
 
 void ckrackApp::update()
 {
     controller.update();
+//    controller.addCrack();
 }
 
 void ckrackApp::draw()
