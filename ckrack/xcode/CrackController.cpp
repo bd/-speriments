@@ -6,6 +6,7 @@ using std::list;
 using namespace ci;
 
 
+
 CrackController::CrackController() {
 }
 

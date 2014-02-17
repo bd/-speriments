@@ -11,6 +11,8 @@
 #include "cinder/gl/gl.h"
 #include "cinder/app/AppBasic.h"
 
+#define MAX_LEN 20
+
 using namespace ci;
 
 Crack::Crack(Vec2f start, Vec2f end){
@@ -38,8 +40,8 @@ Crack Crack::randomCrack(){
     float sx = Rand::randFloat( app::getWindowWidth() );
     float sy = Rand::randFloat( app::getWindowHeight() );
     Vec2f start = Vec2f(sx, sy);
-    float ex = Rand::randFloat( app::getWindowWidth() );
-    float ey = Rand::randFloat( app::getWindowHeight() );
+    float ex = Rand::randFloat(sx + Rand::randFloat(MAX_LEN));
+    float ey = Rand::randFloat(sy + Rand::randFloat(MAX_LEN));
     Vec2f end = Vec2f(ex, ey);
     return Crack(start, end);
     
@@ -47,8 +49,16 @@ Crack Crack::randomCrack(){
 }
 
 Crack Crack::continueCrack(Crack crack){
-    float ex = Rand::randFloat(app::getWindowWidth());
-    float ey = Rand::randFloat(app::getWindowHeight());
+//    float ex = Rand::randFloat(app::getWindowWidth());
+//    float ey = Rand::randFloat(app::getWindowHeight());
+    
+    float ex = Rand::randFloat(MAX_LEN);
+    float ey = Rand::randFloat(MAX_LEN);
+    if (Rand::randBool())
+        ex *= -1;
+    if (Rand::randBool())
+        ey *= -1;
+    
     Vec2f end = Vec2f(ex, ey);
-    return Crack(crack.mEnd, end);
+    return Crack(crack.mEnd, crack.mEnd + end);
 }
