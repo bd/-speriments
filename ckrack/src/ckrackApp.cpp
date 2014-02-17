@@ -37,8 +37,9 @@ void ckrackApp::mouseDown( MouseEvent event )
 
 void ckrackApp::update()
 {
+    Rand::randomize();
     controller.update();
-//    controller.addCrack();
+    controller.addCrack();
 }
 
 void ckrackApp::draw()
