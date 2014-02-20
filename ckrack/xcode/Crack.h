@@ -13,6 +13,7 @@ public:
   
     static Crack randomCrack();
     static Crack continueCrack(Crack);
+    static bool out_of_bounds(ci::Vec2f);
     
     ci::Vec2f mStart;
     ci::Vec2f mEnd;

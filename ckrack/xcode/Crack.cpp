@@ -10,8 +10,11 @@
 #include "cinder/Rand.h"
 #include "cinder/gl/gl.h"
 #include "cinder/app/AppBasic.h"
+#include "Cinder/CinderMath.h"
 
 #define MAX_LEN 20
+#define MAX_ANGLE 340 //degrees
+#define MIN_ANGLE 20 //degrees
 
 using namespace ci;
 
@@ -48,17 +51,29 @@ Crack Crack::randomCrack(){
    
 }
 
+bool Crack::out_of_bounds(Vec2f end){
+    return end.y < 0 or end.x < 0 or end.y > app::getWindowHeight() or end.x > app::getWindowWidth();
+}
+
 Crack Crack::continueCrack(Crack crack){
 //    float ex = Rand::randFloat(app::getWindowWidth());
 //    float ey = Rand::randFloat(app::getWindowHeight());
-    
-    float ex = Rand::randFloat(MAX_LEN);
-    float ey = Rand::randFloat(MAX_LEN);
-    if (Rand::randBool())
-        ex *= -1;
-    if (Rand::randBool())
-        ey *= -1;
-    
-    Vec2f end = Vec2f(ex, ey);
-    return Crack(crack.mEnd, crack.mEnd + end);
+    double angle;
+    Vec2f end;
+    do{
+        float ex = Rand::randFloat(MAX_LEN);
+        float ey = Rand::randFloat(MAX_LEN);
+        if (Rand::randBool())
+            ex *= -1;
+        if (Rand::randBool())
+            ey *= -1;
+        
+        end = Vec2f(ex, ey);
+        double a = toDegrees(atan2(end.y - crack.mEnd.y, end.x - crack.mEnd.x));
+        double b = toDegrees(atan2(crack.mStart.y - crack.mEnd.y, crack.mStart.x - crack.mEnd.x));
+        angle = abs(b - a);
+    }
+    while (angle > MAX_ANGLE or angle < MIN_ANGLE);
+        return Crack(crack.mEnd, crack.mEnd + end);
 }
+

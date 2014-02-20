@@ -31,7 +31,7 @@ void ckrackApp::mouseDown( MouseEvent event )
 {
     Rand::randomize();
 //    simply add a crack to the list, starting at the mouse loc
-    controller.addCrack();
+    controller.addCrack(event.getPos());
     
 }
 
